@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pr-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fluxo de Processsos - Parte 2</title>
+    <style>
+        body {
+            background-color: gray;
+            font-size: 1.5em;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 0px auto;
+            padding: 20px;
+            background-color: white;
+        }
+        table, tr, td ,th {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        th {
+            background-color: black;
+            color: white;
+            border-color: white;
+        }
+
+        table {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <main>    
+        <h1>Fluxo de Processsos - Parte 2</h1>
+        <p>São criados os processos A, B e C, nesta ordem. </p>
+    
+        <p>Para cada evento descrito, mostre quais são os processos que estarão prontos, executando ou bloqueados.</p>
+    
+        <p>Lembre-se que: </p>
+    
+        <ul>
+            <li>Apenas um processo pode estar no estado “Executando”.</li>
+            <li>Se um processo liberar a CPU, outro deve ocupá-la imediatamente.</li>
+            <li>Assuma a ordem de chegada para definir quem ocupa a CPU.</li>
+        </ul>
+    
+        <h2>Fluxo dos processos:</h2>
+    
+        <ol>
+            <li>Os processos A, B, C e D são criados.</li>
+            <li>A CPU está livre e o processo A é despachado para execução.</li>
+            <li>Processo A solicita operação de I/O e é bloqueado.</li>
+            <li>Processo B é despachado para execução.</li>
+            <li>Processo B solicita entrada via digitação e é bloqueado.</li>
+            <li>Processo C é despachado para execução.</li>
+            <li>Processo C conclui sua execução e termina.</li>
+            <li>I/O do processo A é concluído; A volta para a fila de prontos.</li>
+            <li>Digitação do processo B é concluída; B volta para a fila de prontos.</li>
+            <li>Processo D é despachado para execução.</li>
+            <li>Processo D solicita I/O e é bloqueado.</li>
+            <li>Processo A é despachado novamente.</li>
+            <li>Processo A conclui sua execução e termina.</li>
+            <li>Processo B é despachado novamente.</li>
+            <li>Processo B solicita nova operação de I/O e é bloqueado.</li>
+            <li>I/O do processo D é concluído; D volta para a fila de prontos.</li>
+            <li>Processo D é despachado e conclui sua execução.</li>
+            <li>I/O do processo B é concluído; B volta para a fila de prontos.</li>
+            <li>Processo B é despachado pela última vez.</li>
+            <li>Processo B conclui sua execução e termina.</li>
+        </ol>
+        <p>Monte uma tabela com colunas (Evento Nr., PRONTOS, EXECUTANDO, BLOQUEADOS) contendo os estados possíveis e para cada linha descreva um evento.</p>
+    
+        <table>
+            <tr>
+                <th>Fluxo</th>
+                <th>Prontos</th>
+                <th>Executando</th>
+                <th>Bloqueados</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>A, B, C, D</td>
+                <td><hr></td>
+                <td><hr></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>B, C, D</td>
+                <td>A</td>
+                <td><hr></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>B, C, D</td>
+                <td><HR></HR></td>
+                <td>A</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>C, D</td>
+                <td>B</td>
+                <td>A</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>C, D</td>
+                <td><HR></HR></td>
+                <td>A, B</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>D</td>
+                <td>C</td>
+                <td>A, B</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>D</td>
+                <td><HR></HR></td>
+                <td>A, B</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>D, A</td>
+                <td><HR></HR></td>
+                <td>B</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>D, A, B</td>
+                <td><HR></td>
+                <td><HR></td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>A, B</td>
+                <td>D</td>
+                <td><HR></HR></td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>A, B</td>
+                <td><hr></td>
+                <td>D</td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>B</td>
+                <td>A</td>
+                <td>D</td>
+            </tr>
+            <tr>
+                <td>13</td>
+                <td>B</td>
+                <td><hr></td>
+                <td>D</td>
+            </tr>
+            <tr>
+                <td>14</td>
+                <td><hr></td>
+                <td>B</td>
+                <td>D</td>
+            </tr>
+            <tr>
+                <td>15</td>
+                <td><hr></td>
+                <td><hr></td>
+                <td>B, D</td>
+            </tr>
+            <tr>
+                <td>16</td>
+                <td>D</td>
+                <td><hr></td>
+                <td>B</td>
+            </tr>
+            <tr>
+                <td>17</td>
+                <td><hr></td>
+                <td><hr></td>
+                <td>B</td>
+            </tr>
+            <tr>
+                <td>18</td>
+                <td>B</td>
+                <td><hr></td>
+                <td><hr></td>
+            </tr>
+            <tr>
+                <td>19</td>
+                <td><hr></td>
+                <td>B</td>
+                <td><hr></td>
+            </tr>
+            <tr>
+                <td>20</td>
+                <td><hr></td>
+                <td><hr></td>
+                <td><hr></td>
+            </tr>
+        </table>
+        <h2>Descrição passo a passo do fluxo acima</h2>
+        <ol>
+            <li>Todos os processos foram criados e foram alocados em prontos.</li>
+            <li>A CPU está livre e devido a isso o processo <strong>A</strong> foi despachado para <satrong>Executando</satrong>.</li>
+            <li>O processo <strong>A</strong> solicitou a operação de I/O e de devido a isso foi encaminhado para <strong>Bloqueado</strong>, até que a operação de I/O seja concluída.</li>
+            <li>O processo <strong>B</strong> foi despachado para CPU pois ela sempre deve estar ocupada.</li>
+            <li>O processo <strong>B</strong> solicitou a via de digitação, isso não pode ser realizado em executando e por isso foi encaminhado para <strong>Bloqueados</strong>.</li>
+            <li>O processo <strong>C</strong> foi despachado para <strong>Executando</strong>, pois a CPU estava livre.</li>
+            <li>O processo <strong>C</strong> concluiu sua execução e foi finalizado.</li>
+            <li>O I/o do processo <strong>A</strong> foi concluído e ele está pronto para ser executado novamente, devido a isso ele vai para <strong>Prontos</strong>.</li>
+            <li>A digitação do processo <strong>B</strong> foi concluída e ele está pronto para ser executado novamente, encaminhado para <strong>Prontos</strong>.</li>
+            <li>O processo <strong>D</strong> é despachado para <strong>Executando</strong> pois a CPU estava vazia.</li>
+            <li>O processo de solicita I/O e vai para <strong>Bloqueados</strong> para isso.</li>
+            <li>O processo <strong>A</strong> é despachado novamente para <strong>Executando</strong>, pois a CPU estava vazia.</li>
+            <li>O processo <strong>A</strong> termina sua execução e é finalizada.</li>
+            <li>O processo <strong>B</strong> vai para <strong>Executando</strong> novamente.</li>
+            <li>O processo <strong>B</strong> solicita uma nova I/O e é bloqueado novamente.</li>
+            <li>O processo <strong>D</strong> concluído e volta para a fila de prontos.</li>
+            <li>O processo <strong>D</strong> é despachado e conclui sua execução, o processo de foi finalizado.</li>
+            <li>I/O do processo <strong>B</strong> é concluído e volta para a fila de <strong>Prontos</strong>.</li>
+            <li>O processo <strong>B</strong> segue o fluxo e é despachado para <strong>Executando.</strong></li>
+            <li>O processo <strong>B</strong> finaliza sua execução e termina.</li>            
+        </ol>
+</main>
+</body>
+</html>
